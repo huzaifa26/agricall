@@ -5,6 +5,11 @@
       "bundler": "metro"
     },
     "name": "agricall",
-    "slug": "agricall"
+    "slug": "agricall",
+    "splash": {
+      "image": "./assets/Splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    }
   }
 }
