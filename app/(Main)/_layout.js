@@ -63,7 +63,7 @@ export default () => {
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
+      <SafeAreaView style={{ flex: 1, }}>
         <Slot />
       </SafeAreaView>
       <View
@@ -76,6 +76,8 @@ export default () => {
           borderTopColor: "#EEEEEE",
           borderTopWidth: 1,
           paddingHorizontal: 35,
+          position:"relative",
+          zIndex:20
         }}
       >
         {tabs.map((item, index) => {
