@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Image, ImageBackground, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import Header from '../components/Header';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import InputField from '../components/InputField';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import EyeOff from '../svg/EyeOff';
+import Eye from '../svg/Eye';
+import Button from '../components/Button';
+import { useRouter } from 'expo-router';
 
 const Login = () => {
+  const router=useRouter();
   const gradientHeight = 500;
   const gradientBackground = 'purple';
   const data = Array.from({ length: gradientHeight });
@@ -11,38 +18,15 @@ const Login = () => {
   const height = Dimensions.get("window").height
   const width = Dimensions.get("window").width
 
-  console.log(height)
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
-    // <>
-    //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    //     <ImageBackground
-    //       style={{ minWidth: '100%', minHeight: '100%'}}
-    //       source={require('../assets/Background.png')}
-    //     />
-    //     <Header title={"Login"} />
-    //     <Text style={{ position: 'absolute', top: '28%', textAlign: 'center', fontSize: 35 }}>
-    //       L o g i n
-    //     </Text>
-    //     <TextInput
-    //       style={{ position: 'absolute', width: 200, height: 30, top: '38%', textAlign: 'center', fontSize: 19 }}
-    //       placeholder="Email"
-    //       keyboardType="email-address"
-    //       autoCapitalize="none"
-    //     />
-    //     <TextInput
-    //       style={{ position: 'absolute', width: 200, height: 30, top: '44%', textAlign: 'center', fontSize: 19 }}
-    //       placeholder="Password"
-    //       secureTextEntry
-    //     />
-    //     <TouchableOpacity
-    //       style={{ position: 'absolute', width: 100, height: 30, top: '54%', alignItems: 'center', justifyContent: 'center' }}
-    //     >
-    //       <Text style={{ fontSize: 19 }}>Login</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // </>
-
     <View style={{ flex: 1, }}>
       <ImageBackground
         style={{ flex: 1, width: '100%', height: '100%', justifyContent: "center" }}
@@ -50,24 +34,38 @@ const Login = () => {
       >
         <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>
           <Header title={"Login"} />
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ marginTop: 20, fontSize: 35 }}>L o g i n</Text>
-            <TextInput
-              style={{ width: 200, height: 30, marginTop: 10, textAlign: 'center', fontSize: 19 }}
-              placeholder="Email"
-              keyboardType="email-address"
-              autoCapitalize="none"
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, gap: 20 }}>
+            {/* <Text style={{ marginTop: 20, fontSize: 35 }}>L o g i n</Text> */}
+
+            <Image source={require("../assets/Logo.png")} style={{ width: 189, height: 71 }} />
+
+            <InputField
+              title="Username"
+              placeholder="Username"
+              contaynerStyle={{ marginBottom: 10 }}
+              onChangeText={(text) => setEmail(text)}
             />
-            <TextInput
-              style={{ width: 200, height: 30, marginTop: 10, textAlign: 'center', fontSize: 19 }}
-              placeholder="Password"
-              secureTextEntry
+            <InputField
+              title="Password"
+              placeholder="••••••••"
+              secureTextEntry={!showPassword}
+              icon={
+                <TouchableWithoutFeedback onPress={togglePasswordVisibility}>
+                  <View style={{ padding: 20 }}>
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </View>
+                </TouchableWithoutFeedback>
+              }
+              contaynerStyle={{ marginBottom: 16 }}
+              onChangeText={(text) => setPassword(text)}
             />
-            <TouchableOpacity
-              style={{ width: 100, height: 30, marginTop: 20, alignItems: 'center', justifyContent: 'center' }}
-            >
-              <Text style={{ fontSize: 19 }}>Login</Text>
-            </TouchableOpacity>
+            <Button
+              title={"Login"}
+              containerStyle={{ marginBottom: 20 }}
+              // onPress={() => loginHandler()}
+              onPress={() => router.push("/home")}
+              isLoading={false}
+            />
           </View>
         </SafeAreaView>
       </ImageBackground>
