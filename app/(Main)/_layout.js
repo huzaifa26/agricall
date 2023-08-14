@@ -1,63 +1,77 @@
-import { Link, Slot, Tabs } from 'expo-router';
+import { Link, Slot, Tabs, usePathname } from 'expo-router';
 import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AddIcon from '../../svg/AddIcon';
+import GroupsIcon from '../../svg/GroupsIcon';
+import UserIcon from '../../svg/UserIcon';
+import {COLORS} from '../../constants/index'
+
 // import { BookOpenTab, SearchTab, HomeTab } from "../../svg";
 
 export default () => {
+  const pathname = usePathname()
 
   const tabs = [
     {
       id: "1",
       to: "home",
       screen: "Home",
-      // icon: (
-      //   <HomeTab
-      //     strokeColor={
-      //       false == "Home"
-      //         ? "#FF2DAB"
-      //         : "#000"
-      //     }
-      //     fillColor={
-      //       false == "Home"
-      //         ? "#FF2DAB"
-      //         : "#FF2DAB"
-      //     }
-      //   />
-      // ),
+      isActive: pathname == "/home",
+      icon: (
+        <AddIcon
+          strokeColor={
+            pathname == "/home"
+              ? COLORS.PRIMARY
+              : "#000"
+          }
+          fill={
+            pathname == "/home"
+              ? COLORS.PRIMARY
+              : COLORS.GRAY
+          }
+        />
+      ),
     },
     {
       id: "2",
       to: "groups",
       screen: "Groups",
-      // icon: (
-      //   <SearchTab
-      //     strokeColor={
-      //       false == "Search"
-      //         ? "#FF2DAB"
-      //         : "#000"
-      //     }
-      //     fillColor={
-      //       false == "Search"
-      //         ? "#FF2DAB"
-      //         : 'none'
-      //     }
-      //   />
-      // ),
+      isActive: pathname == "/groups",
+      icon: (
+        <GroupsIcon
+          strokeColor={
+            pathname == "/groups"
+              ? COLORS.PRIMARY
+              : "#000"
+          }
+          fill={
+            pathname == "/groups"
+              ? COLORS.PRIMARY
+              : COLORS.GRAY
+          }
+        />
+      ),
     },
     {
       id: "3",
       to: "users",
       screen: "Users",
-      // icon: (
-      //   <BookOpenTab
-      //     strokeColor={
-      //       false == "Courses"
-      //         ? "#FF2DAB"
-      //         : "#000"
-      //     }
-      //   />
-      // ),
+      isActive: pathname == "/users",
+      icon: (
+        <UserIcon
+          strokeColor={
+            pathname == "/users"
+              ? COLORS.PRIMARY
+              : "#000"
+          }
+          fill={
+            pathname == "/users"
+              ? COLORS.PRIMARY
+              : COLORS.GRAY
+          }
+        />
+      ),
     }
   ];
 
@@ -76,25 +90,27 @@ export default () => {
           borderTopColor: "#EEEEEE",
           borderTopWidth: 1,
           paddingHorizontal: 35,
-          position:"relative",
-          zIndex:20
+          position: "relative",
+          zIndex: 20
         }}
       >
         {tabs.map((item, index) => {
           return (
-            <Link href={"/"+item.to}>
+            <Link href={"/" + item.to}>
               <TouchableOpacity
                 key={index}
                 style={{ alignItems: "center", marginBottom: 6 }}
               >
-                <Text>{item.screen}</Text>
+                {/* <Text>{item.screen}</Text> */}
+                {item.icon}
+
                 <Text
                   style={{
                     fontSize: 14,
                     textAlign: "center",
                     color:
-                      false == item.screen
-                        ? "#FF2DAB"
+                      item.isActive
+                        ? COLORS.PRIMARY
                         : "#666666",
                     lineHeight: 14 * 1.2,
                   }}
