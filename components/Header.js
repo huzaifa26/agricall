@@ -1,15 +1,18 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native';
-import Arrow from "../components/Header"
+import Arrow from "../svg/Arrow"
+import { useRouter } from 'expo-router';
 
 export default function Header({ goBack, title, titleStyle }) {
+  const router = useRouter();
+
   return (
     <View
       style={{
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: 42,
+        height: 52,
       }}
     >
       {goBack && (
@@ -19,7 +22,7 @@ export default function Header({ goBack, title, titleStyle }) {
             left: 0,
             paddingHorizontal: 20,
           }}
-          onPress={onPress}
+          onPress={()=> router.back()}
         >
           <Arrow />
         </TouchableOpacity>
@@ -27,10 +30,10 @@ export default function Header({ goBack, title, titleStyle }) {
       {title && (
         <Text
           style={{
-            fontSize: 16,
+            fontSize: 18,
+            fontWeight:500,
             color: "#000",
             textTransform: "capitalize",
-            ...titleStyle,
           }}
         >
           {title}

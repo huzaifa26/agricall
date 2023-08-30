@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import { Dimensions, Switch, Text, TouchableOpacity } from 'react-native'
+import { Dimensions, Switch, Text, TouchableOpacity,FlatList } from 'react-native'
 import { View } from 'react-native'
 import Recording from '../../components/Recording'
 import UpArrow from '../../svg/UpArrow';
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <View style={{ flex: 1 }}>
       <Recording actionSheetRef={actionSheetRef} onPressComment={() => actionSheetRef.current?.hide()} />
-      <TouchableOpacity style={{ backgroundColor: "#fff", position: "absolute", top: height - 100, paddingVertical: 10, paddingHorizontal: width / 2 - 15, borderTopLeftRadius: 25, borderTopRightRadius: 25,zIndex:10 }} onPress={onPressComment}>
+      <TouchableOpacity style={{ backgroundColor: "#fff", position: "absolute", top: height - 115, paddingVertical: 10, paddingHorizontal: width / 2 - 15, borderTopLeftRadius: 25, borderTopRightRadius: 25,zIndex:10 }} onPress={onPressComment}>
         {/* <Text style={{ width: 50, height: 5, backgroundColor: "#666666", borderRadius: 100 }}></Text> */}
         <UpArrow stroke={"#666666"} fill={"#666666"} />
       </TouchableOpacity>

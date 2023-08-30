@@ -14,6 +14,26 @@ export default () => {
 
   const tabs = [
     {
+      id: "3",
+      to: "users",
+      screen: "Users",
+      isActive: pathname == "/users",
+      icon: (
+        <UserIcon
+          strokeColor={
+            pathname == "/users"
+              ? COLORS.PRIMARY
+              : "#000"
+          }
+          fill={
+            pathname == "/users"
+              ? COLORS.PRIMARY
+              : COLORS.GRAY
+          }
+        />
+      ),
+    },
+    {
       id: "1",
       to: "home",
       screen: "Home",
@@ -53,31 +73,12 @@ export default () => {
         />
       ),
     },
-    {
-      id: "3",
-      to: "users",
-      screen: "Users",
-      isActive: pathname == "/users",
-      icon: (
-        <UserIcon
-          strokeColor={
-            pathname == "/users"
-              ? COLORS.PRIMARY
-              : "#000"
-          }
-          fill={
-            pathname == "/users"
-              ? COLORS.PRIMARY
-              : COLORS.GRAY
-          }
-        />
-      ),
-    }
+
   ];
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1, }}>
+      <SafeAreaView style={{ flex: 1,paddingBottom:52 }}>
         <Slot />
       </SafeAreaView>
       <View
@@ -101,9 +102,7 @@ export default () => {
                 key={index}
                 style={{ alignItems: "center", marginBottom: 6 }}
               >
-                {/* <Text>{item.screen}</Text> */}
                 {item.icon}
-
                 <Text
                   style={{
                     fontSize: 14,
@@ -123,10 +122,5 @@ export default () => {
         })}
       </View>
     </>
-    // <Tabs>
-    //   <Tabs.Screen name="home"></Tabs.Screen>
-    //   <Tabs.Screen name="users"></Tabs.Screen>
-    //   <Tabs.Screen name="groups"></Tabs.Screen>
-    // </Tabs>
   )
 }
