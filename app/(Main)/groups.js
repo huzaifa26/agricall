@@ -35,7 +35,10 @@ const ListItem = ({ name }) => {
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{firstLetter}</Text>
         </View> */}
-        <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
+        <View>
+          <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
+          <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>10 Users</Text>
+        </View>
       </View>
     </Shadow>
   );
@@ -92,7 +95,7 @@ export default function Groups() {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <ListItem name={item.name} />}
         onEndReached={loadMoreData}
-        onEndReachedThreshold={0.2} 
+        onEndReachedThreshold={0.2}
       />
     </View>
   )

@@ -30,7 +30,7 @@ function RecordIcon(props) {
         strokeLinecap="butt"
         strokeLinejoin="miter"
         strokeMiterlimit={10}
-        fill="#000"
+        fill="#666"
         fillRule="nonzero"
         opacity={1}
       />
@@ -43,7 +43,7 @@ function RecordIcon(props) {
         strokeLinecap="butt"
         strokeLinejoin="miter"
         strokeMiterlimit={10}
-        fill="#000"
+        fill="#666"
         fillRule="nonzero"
         opacity={1}
       />
@@ -56,7 +56,7 @@ function RecordIcon(props) {
         strokeLinecap="butt"
         strokeLinejoin="miter"
         strokeMiterlimit={10}
-        fill="#000"
+        fill="#666"
         fillRule="nonzero"
         opacity={1}
       />

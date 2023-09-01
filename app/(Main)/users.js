@@ -2,8 +2,10 @@ import React, { useId, useState } from 'react'
 import { Text, View, FlatList, Dimensions } from 'react-native'
 import { Shadow } from 'react-native-shadow-2';
 import Header from "../../components/Header"
+import MaleUser from "../../svg/MaleUser"
+import FemaleUser from "../../svg/FemaleUser"
 
-const ListItem = ({ name }) => {
+const ListItem = ({ name, image }) => {
   const firstLetter = name[0].toUpperCase();
 
   return (
@@ -23,7 +25,7 @@ const ListItem = ({ name }) => {
           width: Dimensions.get("window").width
         }}
       >
-        <View
+        {/* <View
           style={{
             width: 40,
             height: 40,
@@ -34,8 +36,14 @@ const ListItem = ({ name }) => {
           }}
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{firstLetter}</Text>
+        </View> */}
+        <View style={{ maxWidth:100,maxHeight:100 }}>
+          {image}
         </View>
-        <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
+        <View>
+          <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
+          <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>Group name</Text>
+        </View>
       </View>
     </Shadow>
   );
@@ -44,37 +52,48 @@ const ListItem = ({ name }) => {
 export default function Users() {
 
   const data = [
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    { id: useId(), name: 'John' },
-    { id: useId(), name: 'Alice' },
-    { id: useId(), name: 'Bob' },
-    // Add more data objects here
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', image: <MaleUser /> },
+    { id: useId(), name: 'Alice', image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', image: <MaleUser /> },
   ];
 
   const [dataToShow, setDataToShow] = useState(data.slice(0, 10)); // Initial subset of data
@@ -90,9 +109,9 @@ export default function Users() {
       <FlatList
         data={dataToShow}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ListItem name={item.name} />}
+        renderItem={({ item }) => <ListItem name={item.name} image={item.image} />}
         onEndReached={loadMoreData}
-        onEndReachedThreshold={0.2} 
+        onEndReachedThreshold={0.2}
       />
     </View>
   )
