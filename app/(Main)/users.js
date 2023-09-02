@@ -5,7 +5,7 @@ import Header from "../../components/Header"
 import MaleUser from "../../svg/MaleUser"
 import FemaleUser from "../../svg/FemaleUser"
 
-const ListItem = ({ name, image }) => {
+const ListItem = ({ name, image,groupName }) => {
   const firstLetter = name[0].toUpperCase();
 
   return (
@@ -42,7 +42,7 @@ const ListItem = ({ name, image }) => {
         </View>
         <View>
           <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
-          <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>Group name</Text>
+          <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>{groupName}</Text>
         </View>
       </View>
     </Shadow>
@@ -52,48 +52,48 @@ const ListItem = ({ name, image }) => {
 export default function Users() {
 
   const data = [
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
-    { id: useId(), name: 'John', image: <MaleUser /> },
-    { id: useId(), name: 'Alice', image: <FemaleUser /> },
-    { id: useId(), name: 'Bob', image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'John', groupName:"Group Name",image: <MaleUser /> },
+    { id: useId(), name: 'Alice', groupName:"Group Name",image: <FemaleUser /> },
+    { id: useId(), name: 'Bob', groupName:"Group Name",image: <MaleUser /> },
   ];
 
   const [dataToShow, setDataToShow] = useState(data.slice(0, 10)); // Initial subset of data
@@ -109,7 +109,7 @@ export default function Users() {
       <FlatList
         data={dataToShow}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ListItem name={item.name} image={item.image} />}
+        renderItem={({ item }) => <ListItem name={item.name} image={item.image} groupName={item.groupName} />}
         onEndReached={loadMoreData}
         onEndReachedThreshold={0.2}
       />
