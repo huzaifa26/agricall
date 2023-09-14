@@ -78,7 +78,7 @@ export default () => {
 
   return (
     <>
-      <SafeAreaView style={{ flex: 1,paddingBottom:52 }}>
+      <SafeAreaView style={{ flex: 1 }}>
         <Slot />
       </SafeAreaView>
       <View

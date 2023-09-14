@@ -4,9 +4,12 @@ import { Shadow } from 'react-native-shadow-2';
 import Header from "../../components/Header"
 import GroupUser from "../../svg/GroupUser"
 import ContextMenu from '../../components/ContextMenu';
+import { Image } from 'react-native';
 
 const ListItem = ({ name, image, totalUsers }) => {
   const firstLetter = name[0].toUpperCase();
+
+  console.log(image);
 
   return (
     <Shadow
@@ -22,20 +25,24 @@ const ListItem = ({ name, image, totalUsers }) => {
         borderRadius: 5,
         backgroundColor: '#ffffff',
         marginBottom: 12,
-        width: Dimensions.get("window").width -20,
+        width: Dimensions.get("window").width - 20,
         // justifyContent: "space-between",
       }}>
         <View
           style={{
-            flex:10,
+            flex: 10,
             flexDirection: 'row',
             alignItems: 'center',
             backgroundColor: '#ffffff',
           }}
         >
-          <View style={{ maxWidth: 100, maxHeight: 100 }}>
+          {/* <View style={{ maxWidth: 100, maxHeight: 100 }}>
             {image}
-          </View>
+          </View> */}
+          <Image
+          style={{width:60,height:60}}
+            source={ image }
+          />
           <View>
             <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
             <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>{totalUsers}</Text>
@@ -50,15 +57,11 @@ const ListItem = ({ name, image, totalUsers }) => {
 export default function Groups() {
 
   const data = [
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: <GroupUser /> },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
   ];
 
   const [dataToShow, setDataToShow] = useState(data.slice(0, 10)); // Initial subset of data

@@ -15,10 +15,6 @@ const ContextMenu = () => {
         const menuTop = -250;
         const menuLeft = x - width - 230;
 
-        console.log(menuTop)
-
-
-        // Ensure the menu doesn't go off the screen
         if (menuTop + menuHeight > screenHeight) {
           setMenuPosition({ top: y - menuHeight, left: x });
         } else {

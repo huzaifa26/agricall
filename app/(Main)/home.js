@@ -9,6 +9,7 @@ import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import AudioBars from '../../components/AudioBars';
 
 import { Audio } from 'expo-av';
+import { Image } from 'react-native';
 
 export default function Home() {
   const actionSheetRef = useRef();
@@ -162,6 +163,7 @@ export default function Home() {
               {isRecording ? <AudioBars audioBars={audioBars} /> : <RecordIcon />}
 
             </TouchableOpacity>
+
           </Shadow>
         </View>
       </View>
