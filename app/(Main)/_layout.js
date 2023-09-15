@@ -7,8 +7,6 @@ import GroupsIcon from '../../svg/GroupsIcon';
 import UserIcon from '../../svg/UserIcon';
 import {COLORS} from '../../constants/index'
 
-// import { BookOpenTab, SearchTab, HomeTab } from "../../svg";
-
 export default () => {
   const pathname = usePathname()
 

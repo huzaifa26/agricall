@@ -1,16 +1,10 @@
 import React, { useId, useState } from 'react'
 import { Text, View, FlatList, Dimensions, TouchableOpacity } from 'react-native'
 import { Shadow } from 'react-native-shadow-2';
-import Header from "../../components/Header"
-import GroupUser from "../../svg/GroupUser"
-import ContextMenu from '../../components/ContextMenu';
+import ContextMenu from './ContextMenu';
 import { Image } from 'react-native';
 
 const ListItem = ({ name, image, totalUsers }) => {
-  const firstLetter = name[0].toUpperCase();
-
-  console.log(image);
-
   return (
     <Shadow
       viewStyle={{ width: "100%" }}
@@ -57,11 +51,11 @@ const ListItem = ({ name, image, totalUsers }) => {
 export default function Groups() {
 
   const data = [
-    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
-    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../assets/GroupUser.png") },
+    { id: useId(), name: 'John', totalUsers: "10 users", image: require("../assets/GroupUser.png") },
   ];
 
   const [dataToShow, setDataToShow] = useState(data.slice(0, 10)); // Initial subset of data
@@ -73,7 +67,6 @@ export default function Groups() {
 
   return (
     <View style={{ marginHorizontal: 10 }}>
-      <Header goBack={true} title={"Groups"} />
       <FlatList
         style={{ height: Dimensions.get('window').height - 115 }}
         data={dataToShow}

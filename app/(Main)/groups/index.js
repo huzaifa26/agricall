@@ -2,16 +2,16 @@ import * as React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Header from '../../../components/Header'
-import Users from '../../../components/Users';
-import AddUser from '../../../components/AddUser';
+import Groups from '../../../components/Groups';
+import AddGroup from '../../../components/AddGroup';
 import { COLORS } from '../../../constants';
 
 const FirstRoute = () => (
-  <Users />
+  <Groups />
 );
 
 const SecondRoute = () => (
-  <AddUser />
+  <AddGroup />
 );
 
 const renderScene = SceneMap({
@@ -19,13 +19,13 @@ const renderScene = SceneMap({
   second: SecondRoute,
 });
 
-export default function UsersIndex() {
+export default function GroupIndex() {
   const layout = useWindowDimensions();
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'First' },
-    { key: 'second', title: 'Second' },
+    { key: 'first', title: 'Groups' },
+    { key: 'second', title: 'Add Group' },
   ]);
 
   const renderTabBar = (props) => (
@@ -50,12 +50,12 @@ export default function UsersIndex() {
 
   return (
     <>
-      <Header goBack={true} title={"Users"}/>
+      <Header goBack={true} title={"Groups"} />
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        initialLayout={{ width: layout.width,height:layout.height+80 }}
+        initialLayout={{ width: layout.width, height: layout.height + 80 }}
         renderTabBar={renderTabBar}
       />
     </>

@@ -34,7 +34,6 @@ const ContextMenu = () => {
 
   const onViewLayout = (event) => {
     const { height } = event.nativeEvent.layout;
-    console.log(height);
     setViewHeight(height);
   };
 

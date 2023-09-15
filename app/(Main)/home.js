@@ -121,7 +121,6 @@ export default function Home() {
     // For example, you can use the microphone input to calculate audio levels.
     // Here's a simplified example:
     const bars = Array.from({ length: 10 }, (_, index) => index);
-    console.log(bars)
     setAudioBars(bars);
   };
 
