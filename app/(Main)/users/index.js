@@ -24,8 +24,8 @@ export default function UsersIndex() {
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'First' },
-    { key: 'second', title: 'Second' },
+    { key: 'first', title: 'Users' },
+    { key: 'second', title: 'Add User' },
   ]);
 
   const renderTabBar = (props) => (

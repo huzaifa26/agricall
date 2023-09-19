@@ -15,12 +15,10 @@ const ListItem = ({ name, image, totalUsers }) => {
         flexDirection: 'row',
         alignItems: 'center',
         padding: 10,
-        // paddingRight: 30,
         borderRadius: 5,
         backgroundColor: '#ffffff',
         marginBottom: 12,
         width: Dimensions.get("window").width - 20,
-        // justifyContent: "space-between",
       }}>
         <View
           style={{
@@ -30,12 +28,9 @@ const ListItem = ({ name, image, totalUsers }) => {
             backgroundColor: '#ffffff',
           }}
         >
-          {/* <View style={{ maxWidth: 100, maxHeight: 100 }}>
-            {image}
-          </View> */}
           <Image
-          style={{width:60,height:60}}
-            source={ image }
+            style={{ width: 60, height: 60 }}
+            source={image}
           />
           <View>
             <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>

@@ -4,7 +4,7 @@ import { Shadow } from 'react-native-shadow-2';
 import User1 from "../svg/User1"
 import User2 from "../svg/User2"
 import User3 from "../svg/User3"
-
+import ContextMenu from './ContextMenu';
 
 export default function Users() {
 
@@ -69,8 +69,7 @@ export default function Users() {
   )
 }
 
-
-function ListItem ({ name, image, groupName })  {
+function ListItem({ name, image, groupName }) {
   const firstLetter = name[0].toUpperCase();
 
   return (
