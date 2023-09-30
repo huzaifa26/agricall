@@ -5,11 +5,9 @@ import UpArrow from '../../svg/UpArrow';
 import { COLORS } from '../../constants';
 import RecordIcon from '../../svg/RecordIcon';
 import { Shadow } from 'react-native-shadow-2';
-import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import AudioBars from '../../components/AudioBars';
 
 import { Audio } from 'expo-av';
-import { Image } from 'react-native';
 
 export default function Home() {
   const actionSheetRef = useRef();
@@ -27,7 +25,7 @@ export default function Home() {
   const [audioRecorderPlayer, setAudioRecorderPlayer] = useState(null);
 
   const [isRecording, setIsRecording] = useState(false);
-  const [audioBars, setAudioBars] = useState([]);
+  const [audioBar, setAudioBar] = useState([]);
   const recordingOptions = {
     android: {
       extension: '.aac',
@@ -71,7 +69,7 @@ export default function Home() {
   //     intervalRef.current = setInterval(() => {
   //       audioRecorderPlayer.getRecordLevel((level) => {
   //         const bars = Array.from({ length: Math.ceil(level * 10) }, (_, index) => index);
-  //         setAudioBars(bars);
+  //         setAudioBar(bars);
   //       });
   //     }, 100);
   //   } catch (error) {
@@ -84,7 +82,7 @@ export default function Home() {
   //     await audioRecorderPlayer.stopRecorder();
   //     setIsRecording(false);
   //     clearInterval(intervalRef.current);
-  //     setAudioBars([]);
+  //     setAudioBar([]);
   //   } catch (error) {
   //     console.error('Error stopping recording:', error);
   //   }
@@ -116,12 +114,8 @@ export default function Home() {
   };
 
   const animateAudioBars = () => {
-    // Implement audio visualization logic here and update the audioBars state.
-    // This depends on your specific requirements for visualizing audio levels.
-    // For example, you can use the microphone input to calculate audio levels.
-    // Here's a simplified example:
     const bars = Array.from({ length: 10 }, (_, index) => index);
-    setAudioBars(bars);
+    setAudioBar(bars);
   };
 
 
@@ -159,7 +153,7 @@ export default function Home() {
                 shadowOpacity: 0.25,
                 shadowRadius: 3.84,
               }}>
-              {isRecording ? <AudioBars audioBars={audioBars} /> : <RecordIcon />}
+              {isRecording ? <AudioBars audioBar={audioBar} /> : <RecordIcon />}
 
             </TouchableOpacity>
 
