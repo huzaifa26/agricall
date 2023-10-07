@@ -16,8 +16,8 @@ export default function VoiceRecordingVisualization() {
   return (
     <View>
       {audioData.map((item) => (
-        // <AudioSingleCard key={item.id} data={item} />
-        <Text>{item.name}</Text>
+        <AudioSingleCard key={item.id} data={item} />
+        // <Text>{item.name}</Text>
       ))}
     </View>
   )
