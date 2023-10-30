@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151423947582",
+    "project_id": "agricall-96e22",
+    "storage_bucket": "agricall-96e22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151423947582:android:e26742be4f7882cb60d26f",
+        "android_client_info": {
+          "package_name": "com.company.agricall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoB9DZSYqopBhku6EAhxAcAjwjUwf8saA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

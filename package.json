@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-picker/picker": "2.4.8",
     "@shopify/flash-list": "1.4.0",
     "expo": "^48.0.7",
     "expo-av": "~13.2.1",
@@ -18,6 +19,7 @@
     "expo-router": "^1.2.0",
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^10.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.13",
@@ -35,8 +37,7 @@
     "react-native-svg": "13.4.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-web": "~0.18.7",
-    "wavesurfer.js": "^7.3.2",
-    "@react-native-picker/picker": "2.4.8"
+    "wavesurfer.js": "^7.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
