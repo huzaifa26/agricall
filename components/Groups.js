@@ -69,7 +69,6 @@ export default function Groups() {
     setDataLoading(false);
   }
 
-
   useEffect(() => {
     getGroups()
   }, [])
@@ -87,7 +86,7 @@ export default function Groups() {
 
   return (
     <View style={{ marginHorizontal: 10, marginTop: 20 }}>
-      {dataLoading ? <ActivityIndicator color="#A5A0EA" size="large"/> :
+      {dataLoading ? <ActivityIndicator color="#A5A0EA" size="large" /> :
         <FlatList
           style={{ height: Dimensions.get('window').height - 115 }}
           data={dataToShow}

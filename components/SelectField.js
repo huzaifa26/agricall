@@ -13,6 +13,7 @@ export default function SelectField({
   title,
   onValueChange, // Add onValueChange prop
   selectedValue, // Add selectedValue prop
+  data
 }) {
   return (
     <Shadow
@@ -43,21 +44,22 @@ export default function SelectField({
               fontSize: 14,
               color: "#666666",
               lineHeight: 12 * 1.7,
-              zIndex:100,
-              position:"absolute",
-              left:20
+              zIndex: 100,
+              position: "absolute",
+              left: 20
             }}
           >
             {title}
           </Text>
           <Picker
-            style={{ width: "100%",height:40,position:"relative",left:4,top:8}}
-            selectedValue={selectedValue} 
-            onValueChange={onValueChange} 
+            style={{ width: "100%", height: 40, position: "relative", left: 4, top: 8 }}
+            selectedValue={selectedValue}
+            onValueChange={onValueChange}
           >
-            <Picker.Item label={placeholder} value="" />
-            <Picker.Item label="Option 1" value="option1" />
-            <Picker.Item label="Option 2" value="option2" />
+            <Picker.Item label={placeholder} value={null} />
+            {data?.map((value) => {
+              return <Picker.Item label={value.name} value={value} />
+            })}
           </Picker>
         </View>
         {icon && icon}

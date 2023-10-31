@@ -30,7 +30,6 @@ export default function AddGroup() {
     }
   }
 
-
   return (
     <View style={{ height: 200, marginTop: 0 }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 20, gap: 20 }}>
