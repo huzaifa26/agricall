@@ -5,6 +5,12 @@ import ContextMenu from './ContextMenu';
 import { Image } from 'react-native';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 const ListItem = ({ name, image, totalUsers }) => {
   return (
@@ -24,10 +30,9 @@ const ListItem = ({ name, image, totalUsers }) => {
       }}>
         <View
           style={{
-            flex: 10,
+            flex: 8,
             flexDirection: 'row',
             alignItems: 'center',
-            backgroundColor: '#ffffff',
           }}
         >
           <Image
@@ -39,7 +44,26 @@ const ListItem = ({ name, image, totalUsers }) => {
             <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>{`${totalUsers} users`}</Text>
           </View>
         </View>
-        <ContextMenu />
+        {/* <ContextMenu /> */}
+
+        <Menu style={{ flex: 1 }}>
+          <MenuTrigger style={{ borderRadius: 1000 }}>
+            <View style={{ width: 30, height: 30, borderRadius: 1000 }}>
+              <View style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center", gap: 3, borderRadius: 1000 }}>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+              </View>
+            </View>
+            {/* <Text>Hello world</Text> */}
+          </MenuTrigger>
+          <MenuOptions>
+            <MenuOption onSelect={() => console.log(`Edit`)} text='Save' />
+            <MenuOption onSelect={() => console.log(`Delete`)} >
+              <Text>Delete</Text>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
       </View>
     </Shadow>
   );

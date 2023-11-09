@@ -7,49 +7,14 @@ import User3 from "../svg/User3"
 import ContextMenu from './ContextMenu';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../utils/firebase';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 export default function Users() {
-
-  // const data = [
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  //   { id: useId(), name: 'John', groupName: "Group Name", image: <User3 /> },
-  //   { id: useId(), name: 'Alice', groupName: "Group Name", image: <User2 /> },
-  //   { id: useId(), name: 'Bob', groupName: "Group Name", image: <User1 /> },
-  // ];
 
   const userImages = {
     1: <User1 />,
@@ -110,25 +75,54 @@ function ListItem({ name, image, groupName }) {
       startColor={"rgba(6, 38, 100, 0.03)"}
       finalColor={"rgba(6, 38, 100, 0.0)"}
       distance={10}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          padding: 10,
-          borderRadius: 5,
-          backgroundColor: '#ffffff',
-          marginBottom: 12,
-          width: Dimensions.get("window").width
-        }}
-      >
-        <View style={{ maxWidth: 100, maxHeight: 100 }}>
-          {image}
+      <View style={{
+        flexDirection: 'row',
+        // justifyContent: 'space-between',
+        width: Dimensions.get("window").width,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 5,
+        marginBottom: 12,
+      }}>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            flex: 6
+          }}
+        >
+          <View style={{ maxWidth: 100, maxHeight: 100 }}>
+            {image}
+          </View>
+          <View>
+            <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
+            <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>{groupName}</Text>
+          </View>
         </View>
-        <View>
-          <Text style={{ marginLeft: 10, fontSize: 16 }}>{name}</Text>
-          <Text style={{ marginLeft: 10, fontSize: 12, color: 'gray' }}>{groupName}</Text>
-        </View>
+        <Menu style={{
+          flex: 1
+        }}>
+          <MenuTrigger style={{ borderRadius: 1000 }}>
+            <View style={{ width: 30, height: 30, borderRadius: 1000 }}>
+              <View style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center", gap: 3, borderRadius: 1000 }}>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+                <View style={{ width: 4, height: 4, backgroundColor: "#666", borderRadius: 1000 }}></View>
+              </View>
+            </View>
+            {/* <Text>Hello world</Text> */}
+          </MenuTrigger>
+          <MenuOptions>
+            <MenuOption onSelect={() => console.log(`Edit`)} text='Save' />
+            <MenuOption onSelect={() => console.log(`Delete`)} >
+              <Text>Delete</Text>
+            </MenuOption>
+          </MenuOptions>
+        </Menu>
       </View>
+
     </Shadow>
   );
 };
