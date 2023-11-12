@@ -5,16 +5,21 @@ import User1 from "../svg/User1"
 import User2 from "../svg/User2"
 import User3 from "../svg/User3"
 import ContextMenu from './ContextMenu';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../utils/firebase';
+import { collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { auth, db } from '../utils/firebase';
 import {
   Menu,
   MenuOptions,
   MenuOption,
   MenuTrigger,
 } from 'react-native-popup-menu';
+import { useCustomToast } from '../hooks/useCustomToast';
+import { deleteUser, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'expo-router';
 
 export default function Users() {
+  const router = useRouter()
+  const openDialog = useCustomToast();
 
   const userImages = {
     1: <User1 />,
@@ -22,7 +27,7 @@ export default function Users() {
     3: <User3 />,
   }
 
-  const [data, setDataState] = useState([])
+  const [data, setDataState] = useState([]);
   const [dataLoading, setDataLoading] = useState(true);
 
   const getGroups = async () => {
@@ -57,7 +62,7 @@ export default function Users() {
         <FlatList
           data={dataToShow}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <ListItem name={item.name} image={item.image} groupName={item.groupName} />}
+          renderItem={({ item }) => <ListItem name={item.name} image={item.image} groupName={item.groupName} item={item} />}
           onEndReached={loadMoreData}
           onEndReachedThreshold={0.2}
         />
@@ -66,8 +71,23 @@ export default function Users() {
   )
 }
 
-function ListItem({ name, image, groupName }) {
+function ListItem({ name, image, groupName, item }) {
+  const router = useRouter()
   const firstLetter = name[0].toUpperCase();
+
+  const deleteUserHandler = async () => {
+    try {
+      const userRef = doc(db, 'users', item.id);
+      let blocked = false
+      if (item.block === false) {
+        blocked = true;
+      }
+      await updateDoc(userRef, { block: blocked });
+      router.replace('/users');
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <Shadow
@@ -75,17 +95,28 @@ function ListItem({ name, image, groupName }) {
       startColor={"rgba(6, 38, 100, 0.03)"}
       finalColor={"rgba(6, 38, 100, 0.0)"}
       distance={10}>
-      <View style={{
-        flexDirection: 'row',
-        // justifyContent: 'space-between',
-        width: Dimensions.get("window").width,
-        backgroundColor: '#ffffff',
-        alignItems: 'center',
-        padding: 10,
-        borderRadius: 5,
-        marginBottom: 12,
-      }}>
-
+      <View style={item.block ?
+        {
+          flexDirection: 'row',
+          // justifyContent: 'space-between',
+          width: Dimensions.get("window").width,
+          backgroundColor: '#ffffff',
+          alignItems: 'center',
+          padding: 10,
+          borderRadius: 5,
+          marginBottom: 12,
+          opacity: 0.5,
+        }
+        : {
+          flexDirection: 'row',
+          // justifyContent: 'space-between',
+          width: Dimensions.get("window").width,
+          backgroundColor: '#ffffff',
+          alignItems: 'center',
+          padding: 10,
+          borderRadius: 5,
+          marginBottom: 12,
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -115,9 +146,9 @@ function ListItem({ name, image, groupName }) {
             {/* <Text>Hello world</Text> */}
           </MenuTrigger>
           <MenuOptions>
-            <MenuOption onSelect={() => console.log(`Edit`)} text='Save' />
-            <MenuOption onSelect={() => console.log(`Delete`)} >
-              <Text>Delete</Text>
+            <MenuOption onSelect={() => console.log(`Edit`)} text='Edit' />
+            <MenuOption onSelect={() => deleteUserHandler()} >
+              <Text>{item.block ? 'Unblock' : 'block'}</Text>
             </MenuOption>
           </MenuOptions>
         </Menu>

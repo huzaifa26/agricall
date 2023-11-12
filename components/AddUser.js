@@ -13,6 +13,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 
 export default function AddUser() {
+
   const openDialog = useCustomToast();
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,7 @@ export default function AddUser() {
       const docRef = await addDoc(collection(db, "users"), {
         email: userEmail,
         name: userName,
+        password: userPassword,
         groupId: userGroup.id,
         groupName: userGroup.name,
       });
@@ -97,8 +99,8 @@ export default function AddUser() {
           secureTextEntry={true}
         />
         <SelectField
-          title="Group name"
-          placeholder="Group name"
+          title="Select Group"
+          placeholder="Select Group"
           contaynerStyle={{ marginBottom: 10 }}
           onValueChange={(value) => setUserGroup(value)}
           selectedValue={userGroup}
